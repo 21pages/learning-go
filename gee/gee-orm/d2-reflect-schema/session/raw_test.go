@@ -2,13 +2,17 @@ package session
 
 import (
 	"database/sql"
+	"geeorm/dialect"
 	"os"
 	"testing"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var TestDB *sql.DB
+var (
+	TestDB         *sql.DB
+	TestDialect, _ = dialect.GetDialect("mysql")
+)
 
 func TestMain(m *testing.M) {
 	TestDB, _ = sql.Open("mysql", "sun:root@tcp(127.0.0.1:3306)/gee")
@@ -18,7 +22,7 @@ func TestMain(m *testing.M) {
 }
 
 func NewSession() *Session {
-	return New(TestDB)
+	return New(TestDB, TestDialect)
 }
 
 func TestSession_Exec(t *testing.T) {
