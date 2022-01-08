@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package four;
+
+service Four {
+    rpc NoStream(ReqMsg) returns (RspMsg) {}
+    rpc ClientStream(stream ReqMsg) returns (RspMsg) {}
+    rpc ServerStream(ReqMsg) returns (stream RspMsg) {}
+    rpc DoubleStream(stream ReqMsg) returns (stream RspMsg) {}
+}
+
+message ReqMsg {
+    string Request = 1;
+}
+
+message RspMsg {
+    string Reply = 1;
+}
