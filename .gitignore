@@ -1,0 +1,12 @@
+*
+!*/
+!.gitignore
+!*.go
+!*.mod
+!*.sum
+!*.proto
+!*.md
+!*.js
+!*.html
+!*.css
+!*.ts
